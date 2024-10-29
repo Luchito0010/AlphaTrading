@@ -60,7 +60,7 @@ class ItemActivity : ComponentActivity() {
 
         apiService.updateItem(sessionId, itemCode, requestBody).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if (response.code() == 200) {
+                if (response.isSuccessful && response.code() == 204) {
                     Toast.makeText(this@ItemActivity, "Ítem actualizado correctamente", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this@ItemActivity, "Error al actualizar el ítem", Toast.LENGTH_SHORT).show()
